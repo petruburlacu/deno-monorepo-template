@@ -1,0 +1,5 @@
+{
+    "name": "@scope/data-prep",
+    "version": "0.1.0",
+    "exports": "./main.ts"
+}

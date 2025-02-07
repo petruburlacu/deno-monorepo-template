@@ -1,0 +1,60 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "exactOptionalPropertyTypes": true,
+        "useUnknownInCatchVariables": true,
+        "noImplicitOverride": true,
+        "noUncheckedIndexedAccess": true
+    },
+    "workspace": [
+        "apps/data-prep"
+    ],
+    "tasks": {
+        "setup": "deno cache --reload **/*.ts",
+        "start:data-prep": "deno run --allow-net --allow-read --allow-write apps/data-prep/main.ts",
+        "start:data-process": "deno run --allow-net --allow-read --allow-write apps/data-process/main.ts",
+        "test": "deno test --allow-net --allow-read",
+        "lint": "deno lint",
+        "fmt": "deno fmt"
+    },
+    "imports": {
+        "@shared/config": "./shared/config/mod.ts",
+        "@shared/logging": "./shared/logging/mod.ts",
+        "@shared/metrics": "./shared/metrics/mod.ts",
+        "@shared/steps": "./shared/steps/mod.ts",
+        "@shared/core": "./shared/core/mod.ts",
+        "@shared/http": "./shared/http/mod.ts",
+
+        "@pqueue": "https://deno.land/x/p_queue@1.0.1/mod.ts"
+    },
+    "lint": {
+        "files": {
+            "include": ["apps/", "shared/"],
+            "exclude": ["**/node_modules/", "**/dist/", "**/docs/"]
+        },
+        "rules": {
+            "tags": ["recommended"],
+            "include": [
+                "camelcase",
+                "no-sync-fn-in-async-fn",
+                "single-var-declarator",
+                "verbatim-module-syntax",
+                "no-console",
+                "no-explicit-any"
+            ]
+        }
+    },
+    "fmt": {
+        "exclude": ["**/node_modules/", "**/dist/"],
+        "lineWidth": 150,
+        "indentWidth": 4,
+        "singleQuote": true,
+        "semiColons": true
+    },
+    "exclude": [
+        ".git",
+        "testdata",
+        "coverage",
+        "docs"
+    ]
+}
