@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-console
 import { ensureFile } from 'https://deno.land/std/fs/ensure_file.ts';
 
 /**

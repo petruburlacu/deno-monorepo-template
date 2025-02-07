@@ -28,10 +28,8 @@
         "@pqueue": "https://deno.land/x/p_queue@1.0.1/mod.ts"
     },
     "lint": {
-        "files": {
-            "include": ["apps/", "shared/"],
-            "exclude": ["**/node_modules/", "**/dist/", "**/docs/"]
-        },
+        "include": ["apps/", "shared/"],
+        "exclude": ["**/node_modules/", "**/dist/", "**/docs/"],
         "rules": {
             "tags": ["recommended"],
             "include": [

@@ -1,4 +1,4 @@
-import { Labels, Metric, MetricConfig } from './base.ts';
+import { type Labels, Metric, type MetricConfig } from './base.ts';
 
 interface HistogramConfig extends MetricConfig {
     buckets: number[];

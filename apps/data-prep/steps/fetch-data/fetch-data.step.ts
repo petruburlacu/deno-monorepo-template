@@ -3,7 +3,7 @@ import type { FetchDataInput, FetchDataOutput } from './types.ts';
 import { UserService } from '../../services/user.service.ts';
 
 @withMetrics({ name: 'FetchDataStep' })
-// @withRetry({ maxAttempts: 3, backoffMs: 1000 })
+@withRetry({ maxAttempts: 3, backoffMs: 1000 })
 export class FetchDataStep implements Step<FetchDataInput, FetchDataOutput> {
     constructor(private readonly userService = new UserService()) {}
 

@@ -1,4 +1,4 @@
-import { ClientFactory, type CoreClient, type HttpClient } from '@shared/http';
+import { ClientFactory, type HttpClient } from '@shared/http';
 
 export interface User {
     id: string;

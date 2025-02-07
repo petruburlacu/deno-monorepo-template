@@ -73,8 +73,9 @@ export class MetricsWriter {
                 await this.flush();
             }
         } catch (error) {
+            // deno-lint-ignore no-console
             console.error('Failed to write metric:', error);
-            throw new Error(`Metrics writing failed: ${error.message}`);
+            throw new Error(`Metrics writing failed: ${error}`);
         }
     }
 
@@ -101,8 +102,9 @@ export class MetricsWriter {
 
             this.metricsQueue = [];
         } catch (error) {
+            // deno-lint-ignore no-console
             console.error('Failed to flush metrics:', error);
-            throw new Error(`Metrics flush failed: ${error.message}`);
+            throw new Error(`Metrics flush failed: ${error}`);
         }
     }
 
@@ -125,7 +127,9 @@ export class MetricsWriter {
             if (error instanceof Deno.errors.NotFound) {
                 return [];
             }
-            throw new Error(`Failed to read metrics: ${error.message}`);
+            // deno-lint-ignore no-console
+            console.error('Failed to read metrics:', error);
+            throw new Error(`Read metrics failed: ${error}`);
         }
     }
 }
