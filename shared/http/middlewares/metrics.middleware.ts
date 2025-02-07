@@ -35,7 +35,7 @@ export function createMetricsMiddleware(collector: MetricsCollector): Middleware
          * Call template data type -> fields[]
          * Call all data types for every workspace that then matches the sourceFieldId = fields[].id (passing a list of ids)
          * Compose the query of different data types
-         * @param error 
+         * @param error
          */
         error: (error: HttpError) => {
             const duration = Date.now() - (error.config?.startTime ?? Date.now());

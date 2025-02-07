@@ -59,7 +59,7 @@ export class HttpClient {
         this.requestQueue = new PQueue({
             concurrency: this.maxConcurrent,
             interval: this.rateLimit?.perSeconds ? this.rateLimit.perSeconds * 1000 : 0,
-            intervalCap: this.rateLimit?.requests ?? Number.POSITIVE_INFINITY
+            intervalCap: this.rateLimit?.requests ?? Number.POSITIVE_INFINITY,
         });
         this.transforms = config.transforms;
     }
@@ -102,16 +102,16 @@ export class HttpClient {
         if (config?.cache) {
             const cacheKey = config.cache.key ?? `${config.method}:${path}`;
             const cached = this.cache.get(cacheKey);
-            
+
             if (cached && cached.expires > Date.now()) {
                 return cached.data as HttpResponse<T>;
             }
         }
-        
+
         return await this.requestQueue.add(async () => {
             try {
                 const response = await this.executeRequest<T>(path, config);
-                
+
                 if (config?.cache) {
                     const cacheKey = config.cache.key ?? `${config.method}:${path}`;
                     this.cache.set(cacheKey, {
@@ -158,7 +158,7 @@ export class HttpClient {
         }
 
         const processedResponse: HttpResponse<T> = {
-            data: null as T,  // Will be populated in try block
+            data: null as T, // Will be populated in try block
             status: response.status,
             headers: response.headers,
             config,

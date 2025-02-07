@@ -16,4 +16,4 @@ export interface HttpClientConfig {
         request?: (config: RequestConfig) => RequestConfig;
         response?: <T>(response: HttpResponse<T>) => HttpResponse<T>;
     };
-} 
+}

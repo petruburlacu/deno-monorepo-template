@@ -6,7 +6,6 @@ import type { MetricsCollector } from '../../metrics/collector.ts';
 import type { Logger } from '@shared/logging';
 import type { ApiConfig } from '@shared/config';
 
-
 export class CoreClient {
     private readonly http: HttpClient;
 
@@ -28,5 +27,4 @@ export class CoreClient {
     public getHttpClient(): HttpClient {
         return this.http;
     }
-
 }
