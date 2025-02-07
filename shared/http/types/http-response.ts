@@ -1,4 +1,4 @@
-import { RequestConfig } from '@shared/http';
+import type { RequestConfig } from '@shared/http';
 
 export interface HttpResponse<T> {
     data: T;
