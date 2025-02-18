@@ -10,3 +10,4 @@ export type { HttpResponse } from './types/http-response.ts';
 export type { RequestMetrics } from './types/request-metrics.ts';
 export type { HttpMetrics } from './types/http-metrics.ts';
 export type { HttpErrorMetrics } from './types/http-error-metrics.ts';
+export type { HttpClientConfig } from './types/http-client-config.ts';

@@ -11,8 +11,8 @@ D -->|PR| B
 ```
 
 ### Branch Naming
-- Feature branches: `feature/PLAT-XXX-short-description`
-- Bug fixes: `bug/PLAT-XXX-short-description`
+- Feature branches: `feature/PLAT-XXX-short-description` vs `feature/PLAT-XXX`
+- Bug fixes: `bug/PLAT-XXX-short-description` vs `bug/PLAT-XXX`
 - Releases: `release/v8.x.y`
 
 ### Commit Message

@@ -41,7 +41,11 @@ export interface LogEntry {
     /** Optional contextual information */
     context?: Record<string, unknown>;
     /** Optional error information */
-    error?: Error;
+    error?: {
+        message: string;
+        name: string;
+        stack?: string; // Make stack optional since Error.stack can be undefined
+    };
 }
 
 /**
@@ -114,7 +118,7 @@ export class Logger {
         context?: Record<string, unknown>,
         error?: Error,
     ): LogEntry {
-        const entry: LogEntry = {
+        return {
             level,
             message,
             timestamp: new Date().toISOString(),
@@ -122,12 +126,11 @@ export class Logger {
             ...(error && {
                 error: {
                     message: error.message,
-                    stack: error.stack,
                     name: error.name,
+                    ...(error.stack && { stack: error.stack }), // Only include stack if it exists
                 },
             }),
         };
-        return entry;
     }
 
     /**

@@ -25,7 +25,8 @@
         "@shared/core": "./shared/core/mod.ts",
         "@shared/http": "./shared/http/mod.ts",
 
-        "@pqueue": "https://deno.land/x/p_queue@1.0.1/mod.ts"
+        "@pqueue": "https://deno.land/x/p_queue@1.0.1/mod.ts",
+        "eslint-plugin-boundaries": "npm:eslint-plugin-boundaries@^5.0.1"
     },
     "lint": {
         "include": ["apps/", "shared/"],

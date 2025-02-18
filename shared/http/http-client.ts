@@ -1,34 +1,5 @@
 import { default as PQueue } from '@pqueue';
-import type { HttpError, HttpResponse, Middleware, RequestConfig } from '@shared/http';
-
-interface HttpClientConfig {
-    baseUrl?: string;
-    headers?: Record<string, string>;
-    maxRetries?: number;
-    baseDelay?: number;
-    timeout?: number;
-    middlewares?: Middleware[];
-    maxConcurrent?: number;
-    rateLimit?: {
-        requests: number;
-        perSeconds: number;
-    };
-    circuitBreaker?: {
-        failureThreshold: number;
-        resetTimeoutMs: number;
-    };
-    retry?: {
-        strategies: {
-            status?: number[];
-            errors?: string[];
-            custom?: (error: HttpError) => boolean;
-        };
-    };
-    transforms?: {
-        request?: (config: RequestConfig) => RequestConfig;
-        response?: <T>(response: HttpResponse<T>) => HttpResponse<T>;
-    };
-}
+import type { HttpClientConfig, HttpError, HttpResponse, Middleware, RequestConfig } from '@shared/http';
 
 export class HttpClient {
     private readonly baseUrl: string;
@@ -38,12 +9,12 @@ export class HttpClient {
     private readonly maxConcurrent: number;
     private readonly rateLimit: { requests: number; perSeconds: number } | undefined;
     private readonly requestQueue: PQueue;
-    private circuitState = {
+    private readonly circuitState = {
         failures: 0,
         lastFailure: 0,
         isOpen: false,
     };
-    private cache = new Map<string, { data: unknown; expires: number }>();
+    private readonly cache = new Map<string, { data: unknown; expires: number }>();
     private readonly transforms?: HttpClientConfig['transforms'];
 
     constructor(config: HttpClientConfig = {}) {
